@@ -1,26 +1,82 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@theme {
+  --animate-logo:logo 3s ease-out forwards ;
+  --animate-fadeup: fadeup 3s ease-out 5s forwards ; 
+                 /* name duration timing-function delay fill-mode */
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  
+  @keyframes logo {
+    0%{
+      transform: scale(0.6);
+      opacity: 0;
+    }
+    100%{
+      transform: scale(1);
+      opacity: 1;
+    }
   }
+  
+  @keyframes fadeup {
+     0% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(-100%);
+      opacity: 0;
+    }
+   }
+  }
+
+
+
+/* Dark mode  */
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root{
+  /* COLOR VARIABLES */
+  --dark-blue-color:rgb(17, 22, 37);
+ --dark-purple-color: rgb(52, 25, 49);
+  --bright-pink-color:rgb(255, 17, 104);
+  --bright-orange-colr:rgb(229, 64, 40);
+  --deep-pink-color:rgb(215, 0, 96);
+  --deep-yellow-color:rgb(241, 141, 5);
+  --bright-yellow-color:rgb(242, 188, 6);
+  --bright-green-color:rgb(94, 177, 28);
+  --deep-green-color:rgb(58, 118, 52);
+  --brigh-blue-color:rgb(10, 190, 190);
+  --blue-color:rgb(0, 161, 203);
+  --deep-blue-color:rgb(17, 87, 147);
+  
+  /* FONT VARIABLES */
+  --font-Poppins: 'Poppins', sans-serif;
+
+  /* BACKGROUND COLOR  */
+   --dark-bg-color: linear-gradient(159deg,rgba(255, 17, 104, 1) 36%,rgba(241, 141, 5, 1) 100%);
+
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+
+.welcome_dark_bg{
+  background-color: var(--dark-purple-color);
 }
+.welcome_light_bg{
+  background-color:white;
+}
+
+.svg{
+ display: flex;
+ justify-self: center;
+ align-self: center;
+ height: 1rem;
+ width: 3rem;
+}
+
+#footer svg{
+  width: 24px;
+}
+
+
+
+
