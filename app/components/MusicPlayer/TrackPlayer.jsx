@@ -11,6 +11,7 @@ export default function PlayingTrack({ track }) {
   const PlayingUri = useSpotifyStore((s) => s.playingUri);
   const isPlaying = useSpotifyStore((s) => s.isPlaying);
   const istogglePlay = useSpotifyStore((s) => s.togglePlay);
+  
 
 
   const isCurrentPlaying = PlayingUri === track.uri;

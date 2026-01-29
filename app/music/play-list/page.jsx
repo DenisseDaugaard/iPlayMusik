@@ -3,7 +3,7 @@ import { FaMagnifyingGlass } from "react-icons/fa6";
 import fetchmusic from "@/app/api/lib/fetchmusic";
 import PageTitle from "@/app/components/PageTitle";
 import Image from "next/image";
-import TrackPlayer from "@/app/components/TrackPlayer";
+import TrackPlayer from "@/app/components/MusicPlayer/TrackPlayer";
 import mapWithLimit from "@/app/api/lib/mapWithLimit";
 
 

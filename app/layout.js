@@ -4,6 +4,7 @@ import {Poppins} from "next/font/google";
 import ThemeProvider from "./Theme/ThemeProvider";
 import PlayerProvider from "./PlayerProvider";
 import { cookies } from "next/headers";
+import  SvgDefs  from "./components/GradientIcons";
 
 
 
@@ -44,6 +45,7 @@ export default async function RootLayout({ children }) {
           </main>
         </ThemeProvider>
       <PlayerProvider token={token}/>
+      <SvgDefs />
       </body>
     </html>
   );

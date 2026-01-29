@@ -1,22 +1,14 @@
-"use client";
 
-import React, { useId } from "react";
-
-export default function GradientIcons({ Icon }) {
-  const id = useId(); // stable across server + client
-  const gradId = `grad-${id}`;
-
+export default function SvgDefs() {
   return (
-    <svg width="1rem" height="1rem" className="svg" viewBox="0 0 24 24">
+    <svg width="0" height="0" aria-hidden>
       <defs>
-        <linearGradient id={gradId} gradientTransform="rotate(25)">
-          <stop offset="0%" stopColor="#ff2d7a" />
+        <linearGradient id="iconGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stopColor="rgb(255, 45, 122)" />
           <stop offset="100%" stopColor="#ff6a00" />
         </linearGradient>
       </defs>
-
-      {/* apply the gradient */}
-      <Icon style={{ fill: `url(#${gradId})` }} />
     </svg>
   );
 }
+

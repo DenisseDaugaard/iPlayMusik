@@ -1,8 +1,8 @@
 "use client"
 
 import { useEffect } from "react"
-import SpotifyWebPlayer from "./components/SpotifyWebPlayer"
-import {useSpotifyStore} from "./components/store/spotifyStore"
+import SpotifyWebPlayer from "./components/MusicPlayer/SpotifyWebPlayer"
+import { useSpotifyStore } from "../app/components/store/spotifyStore"
 
 export default function PlayerProvider({ token }) {
   const setToken = useSpotifyStore((s) => s.setToken)

@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { useSpotifyStore } from "./store/spotifyStore";
+import { useSpotifyStore } from "../store/spotifyStore";
 
 export default function SpotifyWebPlayer() {
   const playerRef = useRef(null);
@@ -13,6 +13,7 @@ export default function SpotifyWebPlayer() {
   const setDeviceId = useSpotifyStore((s) => s.setDeviceId);
   const setPlaybackState = useSpotifyStore((s) => s.setPlaybackState);
   const setTogglePlay = useSpotifyStore((s) => s.setTogglePlay);
+  const setSeek = useSpotifyStore((s) => s.setSeek);
 
   useEffect(() => {
     if (!token) return;
@@ -32,6 +33,9 @@ export default function SpotifyWebPlayer() {
           console.log("toggle playback");
         });
       });
+
+      // Seek to a minute into the track
+      setSeek(() => (ms) => player.seek(ms));
 
 
       // REQUIRED: get device id
@@ -55,6 +59,8 @@ export default function SpotifyWebPlayer() {
         setPlaybackState({
           playingUri: current?.uri ?? null,
           isPlaying: state ? !state.paused : false,
+          durationMs: state?.duration ?? 0,
+          positionMs: state?.position ?? 0,
         });
       });
 
@@ -77,7 +83,34 @@ export default function SpotifyWebPlayer() {
         playerRef.current?.disconnect();
       } catch {}
     };
-  }, [token, setDeviceId, setPlaybackState, setTogglePlay]);
+  }, [token, setDeviceId, setPlaybackState, setTogglePlay, setSeek]);
+
+
+  //here comes the slider update logic
+  useEffect(() =>{
+    if(!token) return;
+
+    const interval =  setInterval(async() =>{
+      const p = await playerRef.current;
+
+      if(!p) return;
+          const state = await p.getCurrentState();
+          if(!state) return;
+          
+          const current = state.track_window.current_track;
+    
+          setPlaybackState({
+            playingUri: current?.uri ?? null,
+            isPlaying: state ? !state.paused : false,
+            durationMs: state?.duration ?? 0,
+            positionMs: state?.position ?? 0,
+          })
+      }, 500);
+      return () => clearInterval(interval);
+
+  },[token, setPlaybackState]);
+
+
 
 
   useEffect(() => {
