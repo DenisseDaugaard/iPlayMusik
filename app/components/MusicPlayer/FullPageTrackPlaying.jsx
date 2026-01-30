@@ -17,7 +17,6 @@ export default function FullPageTrackPlaying({track}) {
       const isPlaying = useSpotifyStore((s) => s.isPlaying);
       const istogglePlay = useSpotifyStore((s) => s.togglePlay);
 
-    
       const isCurrentPlaying = PlayingUri === track.uri;
     
       const handlePlayPause = () =>{

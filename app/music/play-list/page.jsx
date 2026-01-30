@@ -13,6 +13,7 @@ export default async function AlbumsPage() {
   const url = "https://api.spotify.com/v1/me/playlists";
   let data = null;
   let error = null;
+  
  
   try{
     data = await fetchmusic(url);  

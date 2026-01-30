@@ -86,7 +86,7 @@ export default function SpotifyWebPlayer() {
   }, [token, setDeviceId, setPlaybackState, setTogglePlay, setSeek]);
 
 
-  //here comes the slider update logic
+  //here comes the Slider update logic
   useEffect(() =>{
     if(!token) return;
 

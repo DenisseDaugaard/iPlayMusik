@@ -9,12 +9,14 @@ import ThemeToggle from "./ThemeToggle";
 import { useTheme } from "../Theme/ThemeProvider";
 
 
+
 export default function Footer (){
     const { theme } = useTheme();
     const isDark = theme === "dark";
-    console.log(isDark);
+    //console.log(isDark);
     
     return (
+        <>
         <footer id="footer" className="pt-16">
             <nav>
             <ul className={`${isDark ? "bg-[var(--dark-blue-color)] " : "bg-white shadow-[0_5px_15px_rgba(0,0,0,0.35)]"} footer_navbar fixed bottom-0 left-0 w-full h-16 flex justify-around items-center text-white text-3xl z-50`}>
@@ -26,5 +28,6 @@ export default function Footer (){
             </ul>
             </nav>
         </footer>
+        </>
     )
 }
