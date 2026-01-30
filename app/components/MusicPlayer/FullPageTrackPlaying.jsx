@@ -11,10 +11,8 @@ import { FaPause } from "react-icons/fa";
 
 export default function FullPageTrackPlaying({track}) {
 
-    const data = track;
-    //console.log(data);
-    
-     const playUri = useSpotifyStore((s) => s.playUri); 
+
+      const playUri = useSpotifyStore((s) => s.playUri); 
       const PlayingUri = useSpotifyStore((s) => s.playingUri);
       const isPlaying = useSpotifyStore((s) => s.isPlaying);
       const istogglePlay = useSpotifyStore((s) => s.togglePlay);
@@ -30,7 +28,7 @@ export default function FullPageTrackPlaying({track}) {
         }
       }
 
-
+  
     return  (
         <div className="flex flex-col items-center justify-center min-h-screen text-white"
         style={{backgroundImage: `url(${track.album.images[0]?.url})`, 
@@ -56,7 +54,8 @@ export default function FullPageTrackPlaying({track}) {
           <div className="fixed bottom-[10%] left-1/2 translate-x-[-50%] text-center w-10/12">
             <h1 className="text-2xl text-shadow-lg">{track.name}</h1>
             <p className="text-shadow-lg">{track.artists.map(artist => artist.name).join(", ")}</p>
-              <PlayerDuration durationMs={track.duration_ms} isPlaying={isPlaying} />
+            
+              <PlayerDuration id={track.id} playingUri={PlayingUri} />
             <button className="font-bold text-4xl p-4" onClick={handlePlayPause}>
             {isCurrentPlaying && isPlaying ? (
               <FaPause className="icon-gradient" />

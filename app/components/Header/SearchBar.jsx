@@ -18,7 +18,7 @@ export default function SearchBar() {
         const res = await fetch(`/api/getmusic?url=${encodeURIComponent(url)}`);
     
         const data = await res.json();
-        console.log(data);
+        //console.log(data);
     
         setResults(data);
     }

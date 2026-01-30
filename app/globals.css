@@ -94,3 +94,7 @@
   fill: url(#iconGradient);
   stroke: url(#iconGradient); /* optional */
 }
+
+.slider_track{
+  background-color: red;
+}
