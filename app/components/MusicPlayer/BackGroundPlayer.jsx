@@ -3,7 +3,6 @@ import { usePathname } from "next/navigation"
 import { useSpotifyStore } from "../store/spotifyStore";
 import Link from "next/link";
 //import { useEffect, useState } from "react"
-import { GiMusicalNotes } from "react-icons/gi";
 import { PiVinylRecordBold } from "react-icons/pi";
 
 

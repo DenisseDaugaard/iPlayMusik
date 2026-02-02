@@ -16,8 +16,8 @@ export default async function AlbumPage({ params }) {
     revalidate: 3600,
   });
 
-  const tracksURL = `https://api.spotify.com/v1/albums/${albumId}/tracks?limit=20`;
-  const allTracksData = await fetchmusic(tracksURL, { revalidate: 3600 });
+  const tracksUrl = `https://api.spotify.com/v1/albums/${albumId}/tracks?limit=20`;
+  const allTracksData = await fetchmusic(tracksUrl, { revalidate: 3600 });
   
 
   // Prepare tracks for TrackPlayer
