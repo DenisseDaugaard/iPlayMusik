@@ -2,7 +2,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { FaMagnifyingGlass } from "react-icons/fa6";
+
 
 export default function SearchBar() {
 

@@ -8,7 +8,7 @@ export default async function fetchmusic(url) {
 
   const res = await fetch(url, {
     // caching helps a lot when many users request same thing
-    next: { revalidate: 300 }, // start with 60s (not 3600 while developing)
+    next: { revalidate: 60 }, // start with 60s
     headers: { Authorization: `Bearer ${accessToken}` },
   });
 

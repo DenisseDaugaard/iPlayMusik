@@ -11,7 +11,7 @@ export default function MusicLayout({ children }) {
 
 
     return (
-        <div className={`h-full ${isDarkMode ? 'bg-[linear-gradient(159deg,rgb(52,25,49),rgba(95,38,88,1))] text-white' : 'text-[#111625]'} page flex flex-col h-[100vh]`}>
+        <div className={`h-full ${isDarkMode ? 'bg-[linear-gradient(159deg,rgb(34,16,32),rgb(68,27,63))] text-white' : 'text-[#111625]'} page flex flex-col h-[100vh]`}>
             {children}
             <BackGroundPlayer />
             <Footer />

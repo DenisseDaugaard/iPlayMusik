@@ -47,8 +47,8 @@ export default async function AlbumsPage() {
               <Image
                 src={playlist.images[0]?.url}
                 alt={playlist.name}
-                width={500}
-                height={500}
+                width={300}
+                height={300}
                 className="rounded-lg mb-4"
                 loading="lazy"
                 />

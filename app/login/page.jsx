@@ -2,12 +2,14 @@ export default function LoginPage() {
     
     const CLIENT_ID = process.env.CLIENT_ID;
     const REDIRECT_URI = process.env.REDIRECT_URI;
+    
     const scopes = [
     "streaming",
     "user-read-email",
     "user-read-private",
     "user-read-playback-state",
     "user-modify-playback-state",
+    "user-library-read",
     ].join(" ");
 
     const authUrl = `https://accounts.spotify.com/authorize?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&show_dialog=true&response_type=code&scope=${scopes}`;
