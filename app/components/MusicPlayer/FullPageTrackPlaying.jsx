@@ -35,10 +35,11 @@ export default function FullPageTrackPlaying({track}) {
         backgroundPosition: 'center', 
         backgroundRepeat: 'no-repeat'}}>
 
+      <div className="scrim-top" 
+    />
+
            <div className="absolute top-0 left-0 w-full p-6 grid grid-cols-3 gap-4 flex items-center z-50">
-            <div className="rounded-[50%] bg-[linear-gradient(45deg,rgb(255,45,122)_41%,rgba(252,176,69,1)_100%)] w-8 h-8 flex items-center justify-center">
               <GoBackArrow />
-            </div>
             <p className="text-xl center text-shadow-lg font-bold">PLAYING</p>
           </div>
 

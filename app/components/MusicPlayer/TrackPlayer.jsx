@@ -6,7 +6,7 @@ import { FaPauseCircle } from "react-icons/fa";
 import { ScaleLoader } from "react-spinners";
 import { IoMdPlayCircle } from "react-icons/io";
 
-export default function PlayingTrack({ track }) {
+export default function TrackPlayer({ track }) {
   const playUri = useSpotifyStore((s) => s.playUri);
   const PlayingUri = useSpotifyStore((s) => s.playingUri);
   const isPlaying = useSpotifyStore((s) => s.isPlaying);
@@ -57,7 +57,7 @@ export default function PlayingTrack({ track }) {
               )}
             </button>
           <span>
-          <p className="font-medium">{track.name.replace(/\s*\([^)]*\)$/, "")}</p>
+          <p className="font-medium">{track.name.replace(/\s*(\([^)]*\)|-.*)$/, "")}</p>
           <p className="text-sm text-gray-400">{track.artists.map(artist => artist.name).join(", ")}</p>
             </span>
           {isCurrentPlaying && isPlaying && (

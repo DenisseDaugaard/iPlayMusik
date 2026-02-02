@@ -9,9 +9,12 @@ export default function SpotifyWebPlayer() {
   const token = useSpotifyStore((s) => s.token);
   const deviceId = useSpotifyStore((s) => s.deviceId);
   const uriToPlay = useSpotifyStore((s) => s.uriToPlay);
-
   const setDeviceId = useSpotifyStore((s) => s.setDeviceId);
+  //set playback state in store
   const setPlaybackState = useSpotifyStore((s) => s.setPlaybackState);
+  //clear playback store when needed
+  const clearPlayback = useSpotifyStore((s) => s.clearPlayback);
+
   const setTogglePlay = useSpotifyStore((s) => s.setTogglePlay);
   const setSeek = useSpotifyStore((s) => s.setSeek);
 
@@ -87,29 +90,48 @@ export default function SpotifyWebPlayer() {
 
 
   //here comes the Slider update logic
-  useEffect(() =>{
-    if(!token) return;
+ useEffect(() => {
+  if (!token) return;
 
-    const interval =  setInterval(async() =>{
-      const p = await playerRef.current;
+  const EPSILON_MS = 1200; // tolerance for end-of-track rounding
 
-      if(!p) return;
-          const state = await p.getCurrentState();
-          if(!state) return;
-          
-          const current = state.track_window.current_track;
-    
-          setPlaybackState({
-            playingUri: current?.uri ?? null,
-            isPlaying: state ? !state.paused : false,
-            durationMs: state?.duration ?? 0,
-            positionMs: state?.position ?? 0,
-          })
-      }, 500);
-      return () => clearInterval(interval);
+  const interval = setInterval(async () => {
+    const p = playerRef.current;
+    if (!p) return;
 
-  },[token, setPlaybackState]);
+    const state = await p.getCurrentState();
 
+    // If Spotify returns null state, treat as no active playback
+    if (!state) {
+      clearPlayback();
+      return;
+    }
+
+    const current = state.track_window?.current_track;
+    const durationMs = state.duration ?? 0;
+    const positionMs = state.position ?? 0;
+    const isPlaying = !state.paused;
+
+    const ended =
+      state.paused &&
+      durationMs > 0 &&
+      positionMs >= durationMs - EPSILON_MS;
+
+    if (ended) {
+      clearPlayback();
+      return;
+    }
+
+    setPlaybackState({
+      playingUri: current?.uri ?? null,
+      isPlaying,
+      durationMs,
+      positionMs,
+    });
+  }, 500);
+
+  return () => clearInterval(interval);
+}, [token, setPlaybackState, clearPlayback]);
 
 
 

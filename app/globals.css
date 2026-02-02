@@ -34,6 +34,21 @@
 /* Dark mode  */
 @custom-variant dark (&:where(.dark, .dark *));
 
+/* scrim  */
+@layer utilities {
+  .scrim-top {
+    @apply pointer-events-none absolute inset-x-0 top-0 h-24
+      bg-gradient-to-b
+      from-black/70
+      via-black/40
+      to-transparent
+      dark:from-black/80
+      dark:via-black/50;
+  }
+}
+
+
+
 :root{
   /* COLOR VARIABLES */
   --dark-blue-color:rgb(17, 22, 37);
@@ -48,6 +63,8 @@
   --brigh-blue-color:rgb(10, 190, 190);
   --blue-color:rgb(0, 161, 203);
   --deep-blue-color:rgb(17, 87, 147);
+  --swiper-theme-color: #f97316; 
+
   
   /* FONT VARIABLES */
   --font-Poppins: 'Poppins', sans-serif;
@@ -100,7 +117,28 @@
 }
 
 
-/* .no-scrollbar {
+.no-scrollbar {
   -ms-overflow-style: none;  
   scrollbar-width: none;     
-} */
+}
+
+
+/*----------------------------- active slide -------------------------*/
+
+.swiper-slide-active {
+ transform: scale(1.20);
+  z-index: 10;
+}
+
+/* smooth animation */
+.swiper-slide {
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* optional: dim non-active slides */
+.swiper-slide:not(.swiper-slide-active) {
+  /* opacity: 0.6; */
+  filter:blur(3px);
+  transform: scale(0.8);
+}
+

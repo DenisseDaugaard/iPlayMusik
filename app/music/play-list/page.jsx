@@ -2,10 +2,8 @@ import Header from "@/app/components/Header/Header";
 import { FaMagnifyingGlass } from "react-icons/fa6";
 import fetchmusic from "@/app/api/lib/fetchmusic";
 import PageTitle from "@/app/components/PageTitle";
-import Image from "next/image";
-import TrackPlayer from "@/app/components/MusicPlayer/TrackPlayer";
 import mapWithLimit from "@/app/api/lib/mapWithLimit";
-
+import Carousel from "@/app/components/music-componets/Carousel";
 
 
 export default async function AlbumsPage() {
@@ -36,34 +34,14 @@ export default async function AlbumsPage() {
   );
 
   return (
-    <article className="p-16 bg-[url('/sound-wave.png')] bg-no-repeat bg-fixed lg:bg-cover lg:bg-center min-h-screen">
+    <article className="p-8 bg-[url('/sound-wave.png')] bg-no-repeat bg-fixed lg:bg-cover lg:bg-center min-h-screen">
       <Header title="PLAYLISTS" icon={<FaMagnifyingGlass />} />
       <PageTitle title="Play Lists" />
       <section>
-        <ul className="flex overflow-x-scroll gap-8 pb-4 mt-8">
-          {playlistsWithTracks?.map((playlist) => (
-            <li key={playlist.id} className="mb-8">
-              <section>
-              <Image
-                src={playlist.images[0]?.url}
-                alt={playlist.name}
-                width={300}
-                height={300}
-                className="rounded-lg mb-4"
-                loading="lazy"
-                />
-              </section>
-                <div>
-                  <ul>
-                    {playlist.tracks?.map((item) => (
-                      <TrackPlayer key={item.track.id} track={item.track} />
-                    ))}
-                  </ul>
-                </div>
-            </li>
-          ))}
-        </ul>
+     <Carousel playlists={playlistsWithTracks} />
       </section>
     </article>
   );
 }
+
+

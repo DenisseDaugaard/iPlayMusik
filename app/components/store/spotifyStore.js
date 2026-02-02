@@ -1,42 +1,43 @@
-import {create } from "zustand";
-//check here 
+import { create } from "zustand";
 
-// here I can control the spotify state
 export const useSpotifyStore = create((set, get) => ({
-    token: null,
-    deviceId: null,
-    uriToPlay: null,
-    playingUri:null,
-    isPlaying: false,
-    togglePlay:null,
-    currentState: null,
+  token: null,
+  deviceId: null,
+  uriToPlay: null,
 
-    //state setters
-    seek:null,
-    player: null,
-    durationMs: null,
-    positionMs:null,
-    
-    //setters
-    setPlaybackState:({playingUri, isPlaying, durationMs, positionMs}) =>{
-        set({
-            playingUri,
-            isPlaying,
-            positionMs: positionMs ?? 0,
-            durationMs:durationMs ?? 0,
-        })
-    },
-    
-    // actions
-    setSeek: (fn) => set({ seek: fn }),
-    setToken: (token) => set({ token }),
-    setDeviceId: (deviceId) => set({ deviceId }),
-    playUri: (uri) => set({ uriToPlay: uri }),
-    setPlaybackState: ({ playingUri, isPlaying, durationMs, positionMs }) =>
-    set({ playingUri, isPlaying, durationMs, positionMs }),
-    // toggle
+  playingUri: null,
+  isPlaying: false,
+  durationMs: 0,
+  positionMs: 0,
 
-    setTogglePlay: (fn) => set({ togglePlay: fn }),
-    setPlayer: (player) => set({ player }),
-   
+  togglePlay: null,
+  seek: null,
+  player: null,
+
+  setToken: (token) => set({ token }),
+  setDeviceId: (deviceId) => set({ deviceId }),
+  playUri: (uri) => set({ uriToPlay: uri }),
+
+  setTogglePlay: (fn) => set({ togglePlay: fn }),
+  setSeek: (fn) => set({ seek: fn }),
+  setPlayer: (player) => set({ player }),
+
+  //  single source of truth
+  setPlaybackState: ({ playingUri, isPlaying, durationMs, positionMs }) =>
+    set({
+      playingUri: playingUri ?? null,
+      isPlaying: !!isPlaying,
+      durationMs: durationMs ?? 0,
+      positionMs: positionMs ?? 0,
+    }),
+
+  // helper to clear when ended
+  clearPlayback: () =>
+    set({
+      playingUri: null,
+      isPlaying: false,
+      durationMs: 0,
+      positionMs: 0,
+      uriToPlay: null,
+    }),
 }));

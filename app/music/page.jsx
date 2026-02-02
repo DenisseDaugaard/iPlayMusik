@@ -1,6 +1,5 @@
 import Header from "../components/Header/Header";
 import PageTitle from "../components/PageTitle";
-import fetchmusic from "../api/lib/fetchmusic";
 import AlbumsList from "../components/music-componets/AlbumList";
 import {recomendedIds,rockIds,popIds,jazzIds,} from "../components/music-componets/music_ids";
 import {fetchAlbumsInOneRequest } from "../api/lib/getAllbumsWithLimits";
