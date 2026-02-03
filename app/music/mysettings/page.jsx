@@ -1,7 +1,7 @@
 import PageTitle from "@/app/components/PageTitle";
 import fetchmusic from "@/app/api/lib/fetchmusic";
 import Image from "next/image";
-import Header from "@/app/components/Header/Header";
+import GoBackArrow from "@/app/components/Header/GoBackArrow";
 
 export default async function MySettings() {
   const url = "https://api.spotify.com/v1/me";
@@ -9,7 +9,10 @@ export default async function MySettings() {
 
   return (
     <section className="p-6 max-w-3xl mx-auto h-screen">
-      <Header title="PROFILE" />
+      <header className="w-full py-6 grid grid-cols-3 gap-4 flex items-center z-50">
+        <GoBackArrow />
+        <span>PROFILE</span>
+      </header>
       <PageTitle title="Your Profile" />
 
       <div className="mt-6 flex items-center gap-6 rounded-xl bg-[linear-gradient(90deg,rgba(2,0,36,0.8)_0%,rgba(130,23,75,0.77)_51%)] p-6 shadow-lg">

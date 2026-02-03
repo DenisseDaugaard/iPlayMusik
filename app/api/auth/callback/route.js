@@ -10,8 +10,6 @@ export async function GET(request) {
     const REDIRECT_URI = process.env.REDIRECT_URI;
 
     console.log('this is my code', code);
-    
-
 
     const res = await fetch('https://accounts.spotify.com/api/token', {
         method: 'POST',
@@ -20,7 +18,7 @@ export async function GET(request) {
             'Authorization': `Basic ${btoa(CLIENT_ID + ':' + CLIENT_SECRET)}` 
         }, 
         body: `code=${code}&redirect_uri=${REDIRECT_URI}&grant_type=authorization_code`
-        })
+        });
 
       const data = await res.json();
       const cookieStore = await cookies();

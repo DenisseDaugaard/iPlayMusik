@@ -13,7 +13,6 @@ export default function TrackPlayer({ track }) {
   const istogglePlay = useSpotifyStore((s) => s.togglePlay);
   
 
-
   const isCurrentPlaying = PlayingUri === track.uri;
 
   const handlePlayPause = () =>{
@@ -27,10 +26,10 @@ export default function TrackPlayer({ track }) {
   return (
     <>
       <li key={track.id} className="mb-2">
-        <div className={`flex items-center w-[250px] gap-4 relative ${isCurrentPlaying ? "bg-[linear-gradient(159deg,rgba(255,17,104,0.34)_24%,rgba(241,141,5,1)_100%)] rounded-lg p-1" : ""}`}>
+        <div className={`flex items-center w-full gap-4 relative ${isCurrentPlaying ? "bg-[linear-gradient(159deg,rgba(255,17,104,0.34)_24%,rgba(241,141,5,1)_100%)] rounded-lg p-1" : ""}`}>
             <button type="button" onClick={handlePlayPause}>
               {isCurrentPlaying ? (
-                <>
+                <div className="relative w-[50px] shrink-0">
                 <Image
                 src={track.album.images[0]?.url}
                 alt={track.name}
@@ -40,10 +39,10 @@ export default function TrackPlayer({ track }) {
                 className="rounded-lg"
                 />
                 { istogglePlay && isPlaying ? ( 
-                  <FaPauseCircle size={24} className="text-red-500 absolute top-[30%] left-[7%]"/>) :
-                  (<IoMdPlayCircle size={24} className="text-red-500 absolute top-[30%] left-[7%]"/>)}
+                  <FaPauseCircle size={24} className="text-red-500 absolute top-[30%] left-[25%]"/>) :
+                  (<IoMdPlayCircle size={24} className="text-red-500 absolute top-[30%] left-[25%]"/>)}
                
-                </>
+                </div>
               ) : (
                 <Image
                   src="/play_icon.png"

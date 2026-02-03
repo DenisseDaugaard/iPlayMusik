@@ -28,14 +28,14 @@ export default function HomeCarouselComp() {
 
     return (
        <>
-       <section className="page">
-      <Image
+       <section style={{backgroundImage: 'url(/badges.svg)', backgroundRepeat: 'no-repeat', backgroundPosition: 'center', backgroundSize: 'cover'}} className=" min-h-screen flex flex-col justify-center gap-12 px-8 py-16">
+      {/* <Image
         src="/badges.svg"
         alt="I Play Musik Logo"
         width={375}
         height={375}
         className="flex justify-self-center"
-      />
+      /> */}
       {slide === 1 && (
       <HomeText 
       title="Where Words Fail, Music Speaks"

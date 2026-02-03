@@ -23,7 +23,7 @@ export default function Header ({title}) {
 
 
     return (
-        <header className="p-6">
+        <header className="py-6">
             <nav className={isDark ? "text-white" : "text-[var(--dark-blue-color)]"}>
             <ul className="grid grid-cols-[3fr_1fr] gap-4 flex items-center">
                 <li><div className="flex justify-between items-center ">
