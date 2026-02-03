@@ -4,14 +4,19 @@ export default async function fetchmusic(url) {
 
   const cookiesStore = await cookies();  
   const accessToken = cookiesStore.get("IPM_AT")?.value;
-  if (!accessToken) throw new Error("Missing access token (IPM_AT cookie).");
+ 
+  if(!accessToken){
+    throw new Error("No access token available");
+  }
 
   const res = await fetch(url, {
     // caching helps a lot when many users request same thing
-    next: { revalidate: 60 }, // start with 60s
+    next: { revalidate: 60 }, // start with 
     headers: { Authorization: `Bearer ${accessToken}` },
   });
 
+
+// check for rate limiting
  if (res.status === 429) {
   console.log("429 headers:", Object.fromEntries(res.headers.entries()));
   const body = await res.text().catch(() => "");
