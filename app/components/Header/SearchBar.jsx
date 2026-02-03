@@ -38,15 +38,15 @@ export default function SearchBar() {
       </form>
       {results ? (
         <div className="mt-4">
-            <h2 className="text-lg font-bold mb-2">Se Results:</h2>
+            <h2 className="text-lg font-bold mb-2">Search Results:</h2>
             {results?.tracks?.items.map(track =>(
                 <div key={track.id} className="mb-2 p-2">
                     <ul>
-                        <li>
-                            <Link href={`/player/${track.id}`}>
-                                <div className="flex items-center">
-                                    <Image
-                                    src={track.album.images[0].url}
+                    <li>
+                    <Link href={`/player/${track.id}`}>
+                        <div className="flex items-center">
+                            <Image
+                             src={track.album.images[0].url}
                                     alt={track.name}
                                     width={40}
                                     height={40}

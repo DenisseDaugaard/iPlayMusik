@@ -65,7 +65,7 @@ export default async function AlbumPage({ params }) {
       <div className="px-8">
         <h2 className="mb-2 text-xl font-bold p-4">All tracks</h2>
 
-        <ul className="text-xl">
+        <ul>
           {tracksForTrackPlayer.map((track) => (
             <TrackPlayer key={track.id} track={track} />
           ))}

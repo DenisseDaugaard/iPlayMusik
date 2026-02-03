@@ -12,11 +12,16 @@ export default function Carousel({ playlists }) {
     <div className="w-full flex justify-center">
       <Swiper
         modules={[Pagination]}
-        spaceBetween={12}
+        spaceBetween={20}
         slidesPerView={1.75}
+        loop
+        speed={350}
+        resistanceRatio={0.6}
+        threshold={10}
+        touchRatio={1.1}
+        longSwipesRatio={0.25}
+        longSwipesMs={200}
         pagination={false}
-        // pagination={{ clickable: true }}
-        className="w-[10/12]"
       >
         {playlists?.map((playlist) => {
           const img = playlist?.images?.[0]?.url;
