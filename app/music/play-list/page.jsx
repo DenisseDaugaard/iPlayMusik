@@ -25,7 +25,7 @@ export default async function AlbumsPage() {
     data?.items || [],
     3,
     async (playlist) => {
-      const tracksData = await fetchmusic(`https://api.spotify.com/v1/playlists/${playlist.id}/tracks?market=US&limit=10`);
+      const tracksData = await fetchmusic(`https://api.spotify.com/v1/playlists/${playlist.id}/tracks?market=US&limit=15`);
       return {
         ...playlist,
         tracks: tracksData.items,

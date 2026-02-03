@@ -28,5 +28,5 @@ export async function GET(request) {
       cookieStore.set("IPM_RT", data.refresh_token, { getMaxAge :data.expires_in * 5});
 
 
-        return NextResponse.redirect(new URL("http://127.0.0.1:3000/music")); // redirect to homepage after successful authentication
+        return NextResponse.redirect(new URL("https://iplaymusik-app-denisse.onrender.com/music")); // redirect to homepage after successful authentication
 }
