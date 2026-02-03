@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 
-export function middleware(req) {
+export function proxy(req) {
   const at = req.cookies.get("IPM_AT")?.value;
   const rt = req.cookies.get("IPM_RT")?.value;
 

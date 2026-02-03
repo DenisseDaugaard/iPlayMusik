@@ -9,10 +9,10 @@ export default async function MySettings() {
 
   return (
     <section className="p-6 max-w-3xl mx-auto h-screen">
-      <Header title="My Settings" />
-      <PageTitle title="My Settings" />
+      <Header title="PROFILE" />
+      <PageTitle title="Your Profile" />
 
-      <div className="mt-6 flex items-center gap-6 rounded-xl bg-neutral-900 p-6 shadow-lg">
+      <div className="mt-6 flex items-center gap-6 rounded-xl bg-[linear-gradient(90deg,rgba(2,0,36,0.8)_0%,rgba(130,23,75,0.77)_51%)] p-6 shadow-lg">
         {/* Avatar */}
         <div className="relative h-28 w-28 shrink-0 overflow-hidden rounded-full bg-neutral-800">
           {user.images?.[0]?.url ? (
@@ -23,7 +23,7 @@ export default async function MySettings() {
               className="object-cover"
             />
           ) : (
-            <div className="flex h-full w-full items-center justify-center text-3xl text-neutral-500">
+            <div className="flex h-full w-full items-center justify-center text-3xl text-white">
               🎵
             </div>
           )}
@@ -35,9 +35,9 @@ export default async function MySettings() {
             {user.display_name}
           </h2>
 
-          <p className="text-sm text-neutral-400">{user.email}</p>
+          <p className="text-sm text-white">{user.email}</p>
 
-          <div className="mt-3 flex flex-wrap gap-4 text-sm text-neutral-300">
+          <div className="mt-3 flex flex-wrap gap-4 text-sm text-white">
             <span>
               🌍 <strong>{user.country}</strong>
             </span>
